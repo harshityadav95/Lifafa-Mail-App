@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function exportedPage(path) {
@@ -16,6 +16,18 @@ test("exports the Lifafa Mail product page", async () => {
   assert.match(html, /href="(?:\/Lifafa-Mail-App)?\/privacy\/"/);
   assert.match(html, /href="(?:\/Lifafa-Mail-App)?\/terms\/"/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
+
+  const stylesheet = html.match(/<link[^>]+href="([^"]+\.css)"[^>]*>/)?.[1];
+  assert.ok(stylesheet, "the exported page should reference a stylesheet");
+
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  assert.ok(
+    stylesheet.startsWith(`${basePath}/`),
+    "the stylesheet URL should use the configured Pages base path",
+  );
+
+  const artifactPath = stylesheet.slice(basePath.length).replace(/^\//, "");
+  await access(new URL(`../dist/client/${artifactPath}`, import.meta.url));
 });
 
 test("exports complete OAuth app-domain pages", async () => {
