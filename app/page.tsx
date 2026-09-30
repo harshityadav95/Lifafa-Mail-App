@@ -40,9 +40,6 @@ export default function Home() {
       <SiteHeader />
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="tiny-mark" /> BUILT FOR YOUR APPLE WORLD
-          </p>
           <h1 id="hero-title">
             Your mail.
             <br />
