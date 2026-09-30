@@ -37,7 +37,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-brand">
         <Brand />
-        <p>Email, reimagined.</p>
+        <p>Your mail. Your day. One place.</p>
       </div>
       <div className="footer-links">
         <div>
@@ -52,12 +52,26 @@ export function SiteFooter() {
         </div>
         <div>
           <p>Development</p>
-          <a href="https://github.com/harshityadav95/Lifafa-Mail-App" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://github.com/harshityadav95/Lifafa-Mail-App/issues" target="_blank" rel="noreferrer">Contact</a>
+          <a
+            href="https://github.com/harshityadav95/Lifafa-iOS"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://github.com/harshityadav95/Lifafa-iOS/issues"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Contact
+          </a>
         </div>
       </div>
       <div className="footer-base">
-        <p>Research &amp; design by <strong>SolvePao Research.</strong></p>
+        <p>
+          Research &amp; design by <strong>SolvePao Research.</strong>
+        </p>
         <p>© 2026 SolvePao Research. All rights reserved.</p>
       </div>
     </footer>
@@ -92,7 +106,9 @@ export function LegalPageShell({
         <aside className="legal-toc" aria-label="On this page">
           <p>On this page</p>
           {toc.map((item) => (
-            <a href={`#${item.id}`} key={item.id}>{item.label}</a>
+            <a href={`#${item.id}`} key={item.id}>
+              {item.label}
+            </a>
           ))}
         </aside>
         <article className="legal-content">{children}</article>

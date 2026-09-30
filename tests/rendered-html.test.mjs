@@ -8,10 +8,17 @@ async function exportedPage(path) {
 
 test("exports the Lifafa Mail product page", async () => {
   const html = await exportedPage("index.html");
-  assert.match(html, /Email,/);
-  assert.match(html, /reimagined\./);
-  assert.match(html, /Product concept · not a screenshot/);
-  assert.match(html, /Permission, with purpose/);
+  assert.match(html, /Your mail\./);
+  assert.match(html, /One place\./);
+  assert.match(html, /ONE CONNECTED WORKSPACE/);
+  assert.doesNotMatch(
+    html,
+    /Interactive demo|Product concept|demo-workspace|workspace-sidebar/,
+  );
+  assert.match(html, /7–30 days/);
+  assert.match(html, /To Do/);
+  assert.match(html, /JSON or Markdown on Mac/);
+  assert.match(html, /Permission, with purpose\./);
   assert.match(html, /SolvePao Research/);
   assert.match(html, /href="(?:\/Lifafa-Mail-App)?\/privacy\/"/);
   assert.match(html, /href="(?:\/Lifafa-Mail-App)?\/terms\/"/);
@@ -45,7 +52,10 @@ test("exports complete OAuth app-domain pages", async () => {
 });
 
 test("keeps the website light-only", async () => {
-  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
   assert.match(css, /color-scheme:\s*light/);
   assert.doesNotMatch(css, /prefers-color-scheme:\s*dark/);
 });

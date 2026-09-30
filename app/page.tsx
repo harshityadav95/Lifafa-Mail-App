@@ -2,264 +2,282 @@ import type { Metadata } from "next";
 import { sitePath, SiteFooter, SiteHeader } from "./site-chrome";
 
 export const metadata: Metadata = {
-  title: "Email, reimagined.",
+  title: "Your mail. Your day. One place.",
   description:
-    "Lifafa Mail brings Gmail, Outlook, and custom email into one private, native inbox for Apple devices.",
+    "A native Apple workspace for Gmail, Outlook and IMAP, with calendar, local to-dos, contacts and offline mail.",
 };
 
-const permissionCards = [
-  {
-    number: "01",
-    title: "Mail",
-    copy: "To show your inbox and let you compose, send, reply, label, archive, move, trash, restore, and delete the messages you choose.",
-  },
-  {
-    number: "02",
-    title: "Contacts",
-    copy: "To suggest recipients and, when you ask, sync Google or Outlook contacts into Apple Contacts without deleting your local contacts.",
-  },
-  {
-    number: "03",
-    title: "Calendar",
-    copy: "To read and manage provider calendars for event sync. The current app can copy a useful date range into a dedicated Apple calendar.",
-  },
+const features = [
+  [
+    "01",
+    "An inbox that makes sense.",
+    "Bring multiple Gmail, Outlook and custom accounts together. Sort by time, sender or frequency; organize labels and folders, or clear a sender group in one go.",
+    "Combined inbox · Sender threads · Bulk actions",
+  ],
+  [
+    "02",
+    "Keep the day connected.",
+    "See your calendars, manage local to-dos and find your contacts alongside mail. Sync Google and Outlook events into a dedicated Apple calendar when you choose.",
+    "Calendar · To Do · Contacts",
+  ],
+  [
+    "03",
+    "Take your mail with you.",
+    "Keep a rolling 7–30 days of mail available offline. Secure Mode keeps text-only copies. Supported outgoing messages and mail actions can queue until you reconnect.",
+    "Offline downloads · Outbox · Sync controls",
+  ],
+  [
+    "04",
+    "From first draft to done.",
+    "Compose, reply and reply all with reusable signatures, contact suggestions and attachments. Control attachment downloads and size limits; export mail as JSON or Markdown on Mac.",
+    "Signatures · Attachments · Mac export",
+  ],
 ];
 
 export default function Home() {
   return (
     <main>
       <SiteHeader />
-
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-orb hero-orb-one" aria-hidden="true" />
-        <div className="hero-orb hero-orb-two" aria-hidden="true" />
         <div className="hero-copy">
-          <p className="eyebrow reveal reveal-one">
-            <span className="status-dot" aria-hidden="true" />
-            Native for Apple · In development
+          <p className="eyebrow">
+            <span className="tiny-mark" /> BUILT FOR YOUR APPLE WORLD
           </p>
-          <h1 id="hero-title" className="reveal reveal-two">
-            Email,
-            <span>reimagined.</span>
+          <h1 id="hero-title">
+            Your mail.
+            <br />
+            Your day.
+            <br />
+            <em>One place.</em>
           </h1>
-          <p className="hero-deck reveal reveal-three">
-            One calm inbox for Gmail, Outlook, and the accounts you already
-            use—thoughtfully built for iPhone, iPad, Mac, and Apple Vision.
+          <p className="hero-deck">
+            All your accounts. A clearer inbox. Your calendar, to-dos and
+            people, right where you need them.
           </p>
-          <div className="hero-actions reveal reveal-four">
+          <div className="hero-actions">
             <a className="button button-primary" href="#product">
-              Meet your new inbox <span aria-hidden="true">↓</span>
+              Explore the features
             </a>
-            <a className="button button-quiet" href={sitePath("/privacy/")}>
-              See how your data is used
+            <a className="text-link" href={sitePath("/privacy/")}>
+              Privacy, explained
             </a>
           </div>
-          <p className="hero-note reveal reveal-four">
-            No waitlist. No tracking form. Just a clear look at what we are
-            building.
+          <p className="hero-note">
+            Native for iPhone, iPad, Mac &amp; Apple Vision.
+            <br />
+            In active development. Built by SolvePao Research.
           </p>
         </div>
-
         <div
-          className="inbox-concept reveal reveal-three"
-          role="img"
-          aria-label="Conceptual Lifafa Mail inbox showing multiple accounts in one clean view"
+          className="hero-graphic"
+          aria-label="Lifafa brings mail, calendar, to-dos and contacts together with offline access and privacy controls"
         >
-          <div className="concept-label" aria-hidden="true">
-            Product concept · not a screenshot
+          <div className="graphic-topline">
+            <span>ONE CONNECTED WORKSPACE</span>
+            <span>Made for Apple</span>
           </div>
-          <div className="inbox-window" aria-hidden="true">
-            <div className="window-topbar">
-              <div className="traffic-lights">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="window-title">Lifafa Mail</div>
-              <button tabIndex={-1}>Compose</button>
+          <div className="feature-map">
+            <svg
+              className="map-connections"
+              viewBox="0 0 600 520"
+              aria-hidden="true"
+            >
+              <path d="M300 260L130 85M300 260L475 120M300 260L510 320M300 260L385 440M300 260L155 415M300 260L75 245" />
+              <circle cx="300" cy="260" r="175" />
+              <circle cx="300" cy="260" r="100" />
+            </svg>
+            <div className="map-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={sitePath("/lifafa-icon.png")}
+                width="96"
+                height="96"
+                alt="Lifafa Mail app icon"
+              />
+              <b>Lifafa</b>
+              <span>Your day, connected.</span>
             </div>
-            <div className="inbox-body">
-              <aside className="concept-sidebar">
-                <div className="account-orb">LY</div>
-                <div className="side-item active">
-                  <span>Inbox</span>
-                  <b>8</b>
-                </div>
-                <div className="side-item"><span>Starred</span></div>
-                <div className="side-item"><span>Sent</span></div>
-                <div className="side-item"><span>Drafts</span><b>2</b></div>
-                <div className="side-rule" />
-                <p>ACCOUNTS</p>
-                <div className="account-line"><i className="account-dot gmail" />Personal</div>
-                <div className="account-line"><i className="account-dot outlook" />Work</div>
-              </aside>
-              <div className="message-list">
-                <div className="list-heading">
-                  <div><span>Today</span><b>Inbox</b></div>
-                  <div className="search-pill">Search mail</div>
-                </div>
-                <div className="message-row selected">
-                  <div className="avatar avatar-red">PM</div>
-                  <div className="message-main">
-                    <div className="message-meta"><b>Priya Menon</b><time>10:42</time></div>
-                    <strong>Design notes for Friday</strong>
-                    <p>The new flow feels lighter. I left a few thoughts…</p>
-                  </div>
-                </div>
-                <div className="message-row">
-                  <div className="avatar avatar-gold">A</div>
-                  <div className="message-main">
-                    <div className="message-meta"><b>Alex</b><time>9:18</time></div>
-                    <strong>Dinner on Saturday?</strong>
-                    <p>I found that little place we talked about.</p>
-                  </div>
-                </div>
-                <div className="message-row">
-                  <div className="avatar avatar-blue">M</div>
-                  <div className="message-main">
-                    <div className="message-meta"><b>Microsoft 365</b><time>8:05</time></div>
-                    <strong>Your weekly digest</strong>
-                    <p>A quick look at what moved this week.</p>
-                  </div>
-                </div>
-                <div className="message-row faded-row">
-                  <div className="avatar avatar-green">C</div>
-                  <div className="message-main">
-                    <div className="message-meta"><b>Calendar</b><time>Yesterday</time></div>
-                    <strong>Plans for next week</strong>
-                    <p>Three events are ready to sync.</p>
-                  </div>
-                </div>
+            <div className="map-node node-mail">
+              <span className="node-icon">✉</span>
+              <div>
+                <b>Every inbox</b>
+                <small>Gmail · Outlook · IMAP</small>
               </div>
             </div>
+            <div className="map-node node-calendar">
+              <span className="node-icon">01</span>
+              <div>
+                <b>Your calendar</b>
+                <small>Make room for your day</small>
+              </div>
+            </div>
+            <div className="map-node node-tasks">
+              <span className="node-icon">✓</span>
+              <div>
+                <b>To-dos</b>
+                <small>One next step at a time</small>
+              </div>
+            </div>
+            <div className="map-node node-contacts">
+              <span className="node-icon">@</span>
+              <div>
+                <b>Your people</b>
+                <small>Contacts, close at hand</small>
+              </div>
+            </div>
+            <div className="map-node node-offline">
+              <span className="node-icon">↓</span>
+              <div>
+                <b>Offline mail</b>
+                <small>Take your inbox with you</small>
+              </div>
+            </div>
+            <div className="map-node node-privacy">
+              <span className="node-icon">◇</span>
+              <div>
+                <b>Privacy controls</b>
+                <small>You choose what loads</small>
+              </div>
+            </div>
           </div>
-          <div className="floating-chip chip-secure" aria-hidden="true">
-            <span>✓</span>
-            <div><b>Private by default</b><small>Tokens stay in your Keychain</small></div>
-          </div>
-          <div className="floating-chip chip-accounts" aria-hidden="true">
-            <i className="account-dot gmail" />
-            <i className="account-dot outlook" />
-            <b>One inbox</b>
+          <div className="graphic-bottomline">
+            <span>Mail. Plans. People.</span>
+            <span>A little more headspace.</span>
           </div>
         </div>
       </section>
-
-      <section className="manifesto" aria-label="Product philosophy">
-        <p>Email is where work, plans, receipts, ideas, and people meet.</p>
-        <h2>It should feel like a place you can think.</h2>
-      </section>
-
-      <section className="product-section" id="product" aria-labelledby="product-title">
+      <div className="provider-strip">
+        <span>YOUR ACCOUNTS, TOGETHER</span>
+        <b>
+          <i className="provider gmail">G</i>Gmail
+        </b>
+        <b>
+          <i className="provider outlook">O</i>Outlook
+        </b>
+        <b>
+          <i className="provider icloud">☁</i>iCloud
+        </b>
+        <b>
+          <i className="provider yahoo">Y!</i>Yahoo
+        </b>
+        <b>
+          <i className="provider imap">@</i>IMAP / SMTP
+        </b>
+      </div>
+      <section className="product-section" id="product">
         <div className="section-heading">
-          <p className="kicker">The new inbox</p>
-          <h2 id="product-title">Everything important.<br />Nothing in the way.</h2>
+          <p className="kicker">MORE THAN A MAILBOX</p>
+          <h2>
+            A little less switching.
+            <br />
+            <span>A lot more headspace.</span>
+          </h2>
           <p>
-            Lifafa Mail brings the accounts you depend on into one native,
-            considered space—with controls that stay understandable.
+            One adaptive SwiftUI app brings your mail and daily essentials into
+            a workspace that feels at home on every device.
           </p>
         </div>
-
         <div className="feature-grid">
-          <article className="feature-card feature-large feature-coral">
-            <div className="feature-number">01 / ONE PLACE</div>
-            <div className="account-stack" aria-hidden="true">
-              <div className="stack-card stack-one"><i className="account-dot gmail" />Gmail <span>Personal</span></div>
-              <div className="stack-card stack-two"><i className="account-dot outlook" />Outlook <span>Work</span></div>
-              <div className="stack-card stack-three"><i className="account-dot custom" />IMAP <span>Custom</span></div>
-            </div>
-            <div>
-              <h3>Every account, one clear view.</h3>
-              <p>Keep Gmail, Outlook, work, school, and custom mail together—then switch context whenever you want.</p>
-            </div>
-          </article>
-
-          <article className="feature-card feature-ink">
-            <div className="feature-number">02 / YOUR RHYTHM</div>
-            <div className="sort-art" aria-hidden="true">
-              <span>Newest</span><span>Sender</span><span>Frequency</span>
-            </div>
-            <div>
-              <h3>Sort by what matters now.</h3>
-              <p>Organize by time, sender, or frequency and make quick work of a crowded inbox.</p>
-            </div>
-          </article>
-
-          <article className="feature-card feature-cream">
-            <div className="feature-number">03 / COMPOSE</div>
-            <div className="compose-art" aria-hidden="true">
-              <span>To</span><p>priya@example.com</p>
-              <span>Subject</span><p>Friday’s notes</p>
-              <div className="compose-lines"><i /><i /><i /></div>
-              <button tabIndex={-1}>Send</button>
-            </div>
-            <div>
-              <h3>Write with less friction.</h3>
-              <p>Compose, reply, attach files, choose contacts, and add your signature without breaking your flow.</p>
-            </div>
-          </article>
-
-          <article className="feature-card feature-large feature-sky">
-            <div className="feature-number">04 / CALM BY DEFAULT</div>
-            <div className="privacy-art" aria-hidden="true">
-              <div className="shield-ring"><span>✓</span></div>
-              <div className="privacy-line"><b>Remote images</b><span>Blocked</span></div>
-              <div className="privacy-line"><b>Active content</b><span>Off</span></div>
-              <div className="privacy-line"><b>OAuth tokens</b><span>Keychain</span></div>
-            </div>
-            <div>
-              <h3>Privacy is a product decision.</h3>
-              <p>Remote images and active content are blocked by default. Secure Mode pares messages back even further.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="permissions-section" id="permissions" aria-labelledby="permissions-title">
-        <div className="permissions-intro">
-          <p className="kicker">Permission, with purpose</p>
-          <h2 id="permissions-title">Your account access, explained.</h2>
-          <p>
-            Lifafa requests access only to make visible product features work.
-            Permissions are granted per account and can be revoked by
-            disconnecting that account.
-          </p>
-          <a href={sitePath("/privacy/")}>Read the full privacy policy <span aria-hidden="true">↗</span></a>
-        </div>
-        <div className="permission-list">
-          {permissionCards.map((card) => (
-            <article key={card.number}>
-              <span>{card.number}</span>
-              <div><h3>{card.title}</h3><p>{card.copy}</p></div>
+          {features.map(([number, title, copy, detail]) => (
+            <article className="feature-card" key={number}>
+              <span className="feature-number">{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+              <div className="feature-detail">{detail}</div>
             </article>
           ))}
         </div>
       </section>
-
-      <section className="platform-section" aria-labelledby="platform-title">
-        <p className="kicker">One adaptive app</p>
-        <h2 id="platform-title">Made for the Apple devices already around you.</h2>
-        <div className="platform-row" aria-label="Supported platforms">
-          <span>iPhone</span><i>•</i><span>iPad</span><i>•</i><span>Mac</span><i>•</i><span>Apple Vision</span>
-        </div>
-      </section>
-
-      <section className="closing-section" aria-labelledby="closing-title">
-        <div className="closing-shape" aria-hidden="true"><span>ल</span></div>
-        <p className="kicker">In active development</p>
-        <h2 id="closing-title">A more thoughtful inbox is on its way.</h2>
-        <p>
-          Lifafa Mail is being shaped in the open. Product details may evolve
-          before release; our commitment to clear, respectful data use will not.
-        </p>
-        <div className="closing-actions">
-          <a className="button button-dark" href="https://github.com/harshityadav95/Lifafa-Mail-App" target="_blank" rel="noreferrer">
-            Follow development <span aria-hidden="true">↗</span>
+      <section className="privacy-section" id="permissions">
+        <div className="privacy-intro">
+          <p className="kicker">YOUR INBOX IS PERSONAL</p>
+          <h2>
+            Privacy you
+            <br />
+            can control.
+          </h2>
+          <p>
+            Your accounts connect directly to their providers. Credentials stay
+            in Apple Keychain. You decide what a message is allowed to load.
+          </p>
+          <a className="button button-light" href={sitePath("/privacy/")}>
+            Read our privacy policy
           </a>
-          <a className="text-link" href={sitePath("/terms/")}>Read the terms</a>
+        </div>
+        <div className="privacy-controls">
+          <div>
+            <span>01 / MESSAGE CONTENT</span>
+            <h3>Remote images blocked by default.</h3>
+            <p>
+              Tracking pixels and active content stay blocked until you choose
+              otherwise. Secure Mode strips images and links for a quieter
+              reader.
+            </p>
+          </div>
+          <div>
+            <span>02 / ACCOUNT ACCESS</span>
+            <h3>Permission, with purpose.</h3>
+            <p>
+              Mail access powers your inbox and sending. Contacts support
+              recipients and sync. Calendar access supports provider event sync.
+              Grants apply per account.
+            </p>
+          </div>
+          <div>
+            <span>03 / YOUR CHOICE</span>
+            <h3>Controls stay in your hands.</h3>
+            <p>
+              Disconnect accounts, set offline retention and choose attachment
+              downloads. Sanitized diagnostics use Apple CloudKit and can be
+              turned off in Settings.
+            </p>
+          </div>
         </div>
       </section>
-
+      <section className="platform-section">
+        <p className="kicker">NATIVE, NOT AN AFTERTHOUGHT</p>
+        <h2>
+          One workspace.
+          <br />
+          Everywhere you are.
+        </h2>
+        <div className="platform-grid">
+          {[
+            ["iPhone", "iOS 18+", "Your day, in your pocket."],
+            ["iPad", "iPadOS 18+", "Room to read and get things done."],
+            ["Mac", "macOS 15+", "A full desktop workspace."],
+            ["Apple Vision", "visionOS 2+", "An adaptive native experience."],
+          ].map(([name, version, copy]) => (
+            <div key={name}>
+              <h3>{name}</h3>
+              <span>{version}</span>
+              <p>{copy}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="closing-section">
+        <div>
+          <p className="kicker">BUILT IN THE OPEN</p>
+          <h2>
+            A more thoughtful day
+            <br />
+            starts with your inbox.
+          </h2>
+          <p>
+            Lifafa is in active development. Explore the native app’s source and
+            follow what’s taking shape.
+          </p>
+        </div>
+        <a
+          className="button button-primary"
+          href="https://github.com/harshityadav95/Lifafa-iOS"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Follow Lifafa on GitHub
+        </a>
+      </section>
       <SiteFooter />
     </main>
   );
