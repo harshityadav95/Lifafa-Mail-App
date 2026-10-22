@@ -23,7 +23,7 @@ const features = [
   [
     "03",
     "Take your mail with you.",
-    "Keep a rolling 7–30 days of mail available offline. Secure Mode keeps text-only copies. Supported outgoing messages and mail actions can queue until you reconnect.",
+    "Keep recently used mail available offline within the automatic cache budget. Secure Mode keeps text-only copies. Supported outgoing messages and mail actions can queue until you reconnect.",
     "Offline downloads · Outbox · Sync controls",
   ],
   [
@@ -60,7 +60,7 @@ export default function Home() {
             </a>
           </div>
           <p className="hero-note">
-            Native for iPhone, iPad, Mac &amp; Apple Vision.
+            Native for iPhone, iPad &amp; Mac.
             <br />
             In active development. Built by SolvePao Research.
           </p>
@@ -204,11 +204,11 @@ export default function Home() {
         <div className="privacy-controls">
           <div>
             <span>01 / MESSAGE CONTENT</span>
-            <h3>Remote images blocked by default.</h3>
+            <h3>Choose what email can load.</h3>
             <p>
-              Tracking pixels and active content stay blocked until you choose
-              otherwise. Secure Mode strips images and links for a quieter
-              reader.
+              Enable remote-image blocking or Secure Mode to limit sender tracking.
+              Active scripts and forms are off by default. Secure Mode removes
+              images and links.
             </p>
           </div>
           <div>
@@ -224,9 +224,9 @@ export default function Home() {
             <span>03 / YOUR CHOICE</span>
             <h3>Controls stay in your hands.</h3>
             <p>
-              Disconnect accounts, set offline retention and choose attachment
-              downloads. Sanitized diagnostics use Apple CloudKit and can be
-              turned off in Settings.
+              Disconnect accounts, manage the cache and choose attachment
+              downloads. Local diagnostics and CloudKit sharing are separate,
+              default-off choices. Cloud sharing awaits privacy verification.
             </p>
           </div>
         </div>
@@ -240,10 +240,9 @@ export default function Home() {
         </h2>
         <div className="platform-grid">
           {[
-            ["iPhone", "iOS 18+", "Your day, in your pocket."],
-            ["iPad", "iPadOS 18+", "Room to read and get things done."],
-            ["Mac", "macOS 15+", "A full desktop workspace."],
-            ["Apple Vision", "visionOS 2+", "An adaptive native experience."],
+            ["iPhone", "iOS 27+", "Your day, in your pocket."],
+            ["iPad", "iPadOS 27+", "Room to read and get things done."],
+            ["Mac", "macOS 27+", "A full desktop workspace."],
           ].map(([name, version, copy]) => (
             <div key={name}>
               <h3>{name}</h3>

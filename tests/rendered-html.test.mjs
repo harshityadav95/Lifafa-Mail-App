@@ -15,7 +15,7 @@ test("exports the Lifafa Mail product page", async () => {
     html,
     /Interactive demo|Product concept|demo-workspace|workspace-sidebar/,
   );
-  assert.match(html, /7–30 days/);
+  assert.match(html, /automatic cache budget/);
   assert.match(html, /To Do/);
   assert.match(html, /JSON or Markdown on Mac/);
   assert.match(html, /Permission, with purpose\./);
@@ -47,6 +47,13 @@ test("exports complete OAuth app-domain pages", async () => {
   assert.match(privacy, /Google API Services User Data Policy/);
   assert.match(privacy, /Limited Use requirements/);
   assert.match(privacy, /How data is used/);
+  assert.match(privacy, /23 October 2026/);
+  assert.match(privacy, /Privacy &amp; Diagnostics/);
+  assert.match(privacy, /separate, default-off choices/);
+  assert.match(privacy, /Reports are not anonymous/);
+  assert.match(privacy, /Historical cloud records are not silently erased/);
+  assert.match(privacy, /private privacy\/deletion contact/);
+  assert.doesNotMatch(privacy, /anonymous install identifier|Attachments are excluded from device backups/);
   assert.match(terms, /Terms of Service/);
   assert.match(terms, /Development and preview status/);
 });
