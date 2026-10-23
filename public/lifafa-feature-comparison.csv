@@ -1,0 +1,44 @@
+Category,Feature,Lifafa Mail (in development),GotEmail,Inbox Zero,Reviewed
+Mail,"Multiple accounts, one inbox","Gmail, Outlook & IMAP","Gmail, Outlook & IMAP",Gmail & Outlook,2026-10-24
+Mail,Custom IMAP / SMTP accounts,Supported,Supported,Not listed,2026-10-24
+Mail,Sender threads & bulk actions,Supported,Supported,Bulk archive,2026-10-24
+Mail,"Folders, labels & search",Local & provider search,Local & server search,Supported,2026-10-24
+Mail,Signatures & attachments,Supported,Supported,Not listed,2026-10-24
+Mail,Automatic offline caching,Budgeted local cache,Not listed,Not listed,2026-10-24
+Mail,Durable offline outbox,Send when reconnected,Not listed,Not listed,2026-10-24
+Mail,Calendar & contacts,Native workspaces,Supported,Calendar integration,2026-10-24
+Mail,Mail in the Mac notch,Not available,Supported²,Not listed,2026-10-24
+Mail,Sign-in code shortcuts,Not available,Copy & fill²,Not listed,2026-10-24
+Mail,Redacted message screenshots,Not available,Supported²,Not listed,2026-10-24
+Mail,Message translation,Not available,On-device Apple translation,Not listed,2026-10-24
+Mail,Open & click tracking,Not available,Supported,Not listed,2026-10-24
+Mail,Snooze / send later,Work-item snooze only,Supported²,Supported¹,2026-10-24
+Intelligence,Email summaries,"Optional, eligible devices",On demand,AI plan,2026-10-24
+Intelligence,AI-assisted replies,Local draft + review,On demand,Automatic AI drafts,2026-10-24
+Intelligence,On-device Apple intelligence,"Opt-in, when available",Listed in benchmark²,Not listed,2026-10-24
+Intelligence,Bring your own AI provider,Public providers gated³,Own key / local model²,Self-host options,2026-10-24
+Intelligence,Automatic categorization,Opt-in intent views,Manual labels listed,AI labels,2026-10-24
+Intelligence,Editable rules & corrections,Ordered rules + field edits,Not listed,Plain-English rules,2026-10-24
+Workflow,Email-linked To Do,"Needs You, Review, Waiting",Not listed,Reply split only¹,2026-10-24
+Workflow,Exact quote for each work action,Source-linked evidence,Not listed,Not listed,2026-10-24
+Workflow,Review before external actions,Explicit user review,Draft review,Configurable automation,2026-10-24
+Workflow,Apple Reminders export,User-requested export,Not listed,Not listed,2026-10-24
+Workflow,"Siri, Shortcuts & Spotlight",Opt-in Apple integrations⁴,Not listed,Not listed,2026-10-24
+Workflow,Bulk newsletter unsubscribe,Not available,Not listed,Supported,2026-10-24
+Workflow,Cold email blocking,Not available,Not listed,AI plan,2026-10-24
+Workflow,Mail analytics & digests,Workspace dashboard,Not listed,Analytics + AI digests,2026-10-24
+Workflow,"Slack, Teams, CRM & meeting tools",Not available,Not listed,Plan dependent,2026-10-24
+Privacy,Direct mail-provider connection,No Lifafa mail relay,Direct from Mac,Hosted / self-hosted,2026-10-24
+Privacy,Remote-content controls,Blocking & Secure Mode,Remote images blocked,Not listed,2026-10-24
+Privacy,Encrypted derived-work sync,Opt-in private iCloud⁴,Not listed,Not listed,2026-10-24
+Platforms,Native Apple apps,"iPhone, iPad & Mac · 27+",Mac; iPhone beta,iPhone + desktop,2026-10-24
+Platforms,"Web, Windows & Android",Not available,Not listed,Available / Android update due,2026-10-24
+Mail,Keyboard shortcuts,Native Mac commands,Custom / Gmail keys,Keyboard-first¹,2026-10-24
+Mail,Appearance & themes,"Light, dark & custom",Light / dark / auto,Not listed,2026-10-24
+Mail,Mail export,Mac JSON / Markdown,PDF export²,Not listed,2026-10-24
+Mail,Mail notifications,Native notifications,IMAP IDLE alerts,Slack alerts¹,2026-10-24
+Workflow,Team comments & mentions,Not available,Not listed,Supported¹,2026-10-24
+Workflow,Automatic attachment filing,Not available,Not listed,Plus plan,2026-10-24
+Intelligence,Knowledge base for AI context,Not available,Not listed,Plus plan,2026-10-24
+Privacy,Self-hosted assistant,"Native app, no backend",Not listed,Supported,2026-10-24
+Platforms,Availability,In active development,Paid Mac app / iOS beta,Free app + paid AI,2026-10-24

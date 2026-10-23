@@ -12,7 +12,9 @@ export function Brand() {
       {/* Static export: the branded source image is already right-sized. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={`${basePath}/lifafa-icon.png`} alt="" width="44" height="44" />
-      <span>Lifafa Mail</span>
+      <span>
+        lifafa<span className="brand-dot">.</span>
+      </span>
     </a>
   );
 }
@@ -22,12 +24,14 @@ export function SiteHeader() {
     <header className="site-header">
       <Brand />
       <nav aria-label="Primary navigation">
-        <a href={sitePath("/#product")}>Product</a>
-        <a href={sitePath("/#permissions")}>Data access</a>
-        <a href={sitePath("/privacy/")}>Privacy</a>
-        <a href={sitePath("/terms/")}>Terms</a>
+        <a href={sitePath("/#product")}>The experience</a>
+        <a href={sitePath("/#compare")}>Features &amp; comparison</a>
+        <a href={sitePath("/#platforms")}>Made for Apple</a>
+        <a href={sitePath("/#faq")}>FAQ</a>
       </nav>
-      <span className="development-pill">In development</span>
+      <a className="header-cta" href={sitePath("/#demo")}>
+        Explore the demo <span aria-hidden="true">↗</span>
+      </a>
     </header>
   );
 }
@@ -37,13 +41,13 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-brand">
         <Brand />
-        <p>Your mail. Your day. One place.</p>
+        <p>A little less inbox. A lot more life.</p>
       </div>
       <div className="footer-links">
         <div>
           <p>Product</p>
           <a href={sitePath("/#product")}>Overview</a>
-          <a href={sitePath("/#permissions")}>Data access</a>
+          <a href={sitePath("/#compare")}>Feature comparison</a>
         </div>
         <div>
           <p>Legal</p>
@@ -53,14 +57,14 @@ export function SiteFooter() {
         <div>
           <p>Development</p>
           <a
-            href="https://github.com/harshityadav95/Lifafa-iOS"
+            href="https://github.com/solvePao/Lifafa-iOS"
             target="_blank"
             rel="noreferrer"
           >
             GitHub
           </a>
           <a
-            href="https://github.com/harshityadav95/Lifafa-iOS/issues"
+            href="https://github.com/solvePao/Lifafa-iOS/issues"
             target="_blank"
             rel="noreferrer"
           >

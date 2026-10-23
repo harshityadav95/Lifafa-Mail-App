@@ -15,7 +15,7 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Lifafa Mail — Email, reimagined.",
+    default: "Lifafa Mail — The last email app you’ll ever need.",
     template: "%s | Lifafa Mail",
   },
   description:
@@ -32,30 +32,30 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Lifafa Mail",
-    title: "Lifafa Mail — Email, reimagined.",
+    title: "Lifafa Mail — The last email app you’ll ever need.",
     description:
       "One calm, private inbox for Gmail, Outlook, and custom email.",
     images: [
       {
-        url: `${siteUrl.replace(/\/$/, "")}/og.png`,
+        url: `${siteUrl.replace(/\/$/, "")}/og-lifafa.png`,
         width: 1536,
         height: 1024,
-        alt: "Lifafa Mail — Email, reimagined.",
+        alt: "Lifafa Mail — The last email app you’ll ever need.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lifafa Mail — Email, reimagined.",
+    title: "Lifafa Mail — The last email app you’ll ever need.",
     description:
       "One calm, private inbox for Gmail, Outlook, and custom email.",
-    images: [`${siteUrl.replace(/\/$/, "")}/og.png`],
+    images: [`${siteUrl.replace(/\/$/, "")}/og-lifafa.png`],
   },
 };
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#007f83",
+  themeColor: "#f8f9fa",
 };
 
 export default function RootLayout({

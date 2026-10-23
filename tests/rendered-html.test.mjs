@@ -8,21 +8,26 @@ async function exportedPage(path) {
 
 test("exports the Lifafa Mail product page", async () => {
   const html = await exportedPage("index.html");
-  assert.match(html, /Your mail\./);
-  assert.match(html, /One place\./);
-  assert.match(html, /ONE CONNECTED WORKSPACE/);
-  assert.doesNotMatch(
-    html,
-    /Interactive demo|Product concept|demo-workspace|workspace-sidebar/,
-  );
-  assert.match(html, /automatic cache budget/);
-  assert.match(html, /To Do/);
-  assert.match(html, /JSON or Markdown on Mac/);
-  assert.match(html, /Permission, with purpose\./);
-  assert.match(html, /SolvePao Research/);
-  assert.match(html, /href="(?:\/Lifafa-Mail-App)?\/privacy\/"/);
-  assert.match(html, /href="(?:\/Lifafa-Mail-App)?\/terms\/"/);
+  assert.match(html, /The last email app/);
+  assert.match(html, /you’ll ever/);
+  assert.match(html, /Fictional sample mail/);
+  assert.match(html, /Feature comparison/);
+  assert.match(html, /GotEmail/);
+  assert.match(html, /Inbox Zero/);
+  assert.match(html, /Not available/);
+  assert.match(html, /Intelligence is off by default/);
+  assert.match(html, /does not send, pay, approve/);
+  assert.match(html, /privacy\//);
+  assert.match(html, /terms\//);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
+  const basePrefix = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  assert.ok(html.includes(`${basePrefix}/assets/mail-still-life-cutout.png`));
+  await access(
+    new URL(
+      "../dist/client/assets/mail-still-life-cutout.png",
+      import.meta.url,
+    ),
+  );
 
   const stylesheet = html.match(/<link[^>]+href="([^"]+\.css)"[^>]*>/)?.[1];
   assert.ok(stylesheet, "the exported page should reference a stylesheet");
@@ -53,7 +58,10 @@ test("exports complete OAuth app-domain pages", async () => {
   assert.match(privacy, /Reports are not anonymous/);
   assert.match(privacy, /Historical cloud records are not silently erased/);
   assert.match(privacy, /private privacy\/deletion contact/);
-  assert.doesNotMatch(privacy, /anonymous install identifier|Attachments are excluded from device backups/);
+  assert.doesNotMatch(
+    privacy,
+    /anonymous install identifier|Attachments are excluded from device backups/,
+  );
   assert.match(terms, /Terms of Service/);
   assert.match(terms, /Development and preview status/);
 });
