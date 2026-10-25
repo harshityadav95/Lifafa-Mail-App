@@ -26,9 +26,11 @@ export function SiteHeader() {
       <nav aria-label="Primary navigation">
         <a href={sitePath("/#product")}>The experience</a>
         <a href={sitePath("/#compare")}>Features &amp; comparison</a>
+        <a href={sitePath("/pricing/")}>Pricing</a>
         <a href={sitePath("/#platforms")}>Made for Apple</a>
         <a href={sitePath("/#faq")}>FAQ</a>
       </nav>
+      <a className="mobile-pricing-link" href={sitePath("/pricing/")}>Pricing</a>
       <a className="header-cta" href={sitePath("/#demo")}>
         Explore the demo <span aria-hidden="true">↗</span>
       </a>
@@ -48,6 +50,7 @@ export function SiteFooter() {
           <p>Product</p>
           <a href={sitePath("/#product")}>Overview</a>
           <a href={sitePath("/#compare")}>Feature comparison</a>
+          <a href={sitePath("/pricing/")}>Pricing</a>
         </div>
         <div>
           <p>Legal</p>

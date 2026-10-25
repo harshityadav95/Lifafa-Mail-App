@@ -2,9 +2,9 @@
 
 Responsive static product and OAuth app-domain website for the native Lifafa Mail app, designed by SolvePao Research.
 
-The redesign follows the supplied Fanout hero composition with Lifafa-specific copy and original artwork. Feature copy is grounded in the Lifafa-iOS implementation. The interactive workspace uses **fictional sample mail**, browser-memory state and no mailbox/API connections. It includes inbox search, message selection, a calendar illustration, work-item completion/undo, accessible feature tabs, a filterable 43-feature comparison and a downloadable CSV.
+The redesign follows the supplied Fanout hero composition with Lifafa-specific copy and original artwork. Feature copy is grounded in the Lifafa-iOS implementation. The interactive workspace uses **fictional sample mail**, browser-memory state and no mailbox/API connections. It includes inbox search, message selection, a calendar illustration, work-item completion/undo, accessible feature tabs, a filterable 43-feature, six-product comparison and a downloadable CSV.
 
-Privacy and Terms routes are retained. The site has no authentication, form collection, analytics, marketing pixels, backend or runtime server requirement. App availability is described as **in active development**; public downloads and pricing are not announced.
+A separate `/pricing/` page compares published paid plans for Mimestream, Airmail, Superhuman Mail, GotEmail and Inbox Zero, in a monthly, annual and lifetime comparison table, with source links and plan caveats. A highlighted Lifafa row below the competitors keeps all three amounts “Disclosed soon”. Lifafa remains “Coming soon” with an affordability goal and no disclosed amount. Privacy and Terms routes are retained. The site has no authentication, form collection, analytics, marketing pixels, backend or runtime server requirement. App availability is described as **in active development**; public downloads and pricing are not announced.
 
 ## Local preview
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev -- --port 4173
 ```
 
-Open `http://localhost:4173/`.
+Open `http://localhost:4173/`, `http://localhost:4173/#compare`, or `http://localhost:4173/pricing/`.
 
 ## Static export
 
@@ -28,6 +28,7 @@ Project-path hosting is supported with `NEXT_PUBLIC_BASE_PATH=/Lifafa-Mail-App`.
 ## Content and assets
 
 - `app/landing-experience.tsx`: page sections and local demo behavior.
+- `app/pricing-data.ts` and `app/pricing/`: sourced competitor prices and the pricing page. Airmail uses the US App Store rates and discloses the conflicting help-center rates.
 - `app/comparison-data.ts`: comparison claims; reviewed 24 October 2026. “Not listed” means unverified, not absent.
 - `public/lifafa-feature-comparison.csv`: matching downloadable feature inventory; update when comparison data changes.
 - `public/assets/mail-still-life-cutout.png`: original generated paper-envelope artwork.

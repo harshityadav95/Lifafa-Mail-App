@@ -74,3 +74,30 @@ test("keeps the website light-only", async () => {
   assert.match(css, /color-scheme:\s*light/);
   assert.doesNotMatch(css, /prefers-color-scheme:\s*dark/);
 });
+
+test("exports pricing and keeps Lifafa's amount unannounced", async () => {
+  const html = await exportedPage("pricing/index.html");
+  for (const product of ["Mimestream", "Airmail", "Superhuman Mail", "GotEmail", "Inbox Zero"]) {
+    assert.ok(html.includes(product), `${product} is included in pricing`);
+    assert.ok((await exportedPage("index.html")).includes(product), `${product} is included in features`);
+  }
+  assert.match(html, /Coming soon/);
+  assert.match(html, /below the competing paid options/);
+  assert.match(html, /pricing-comparison-table/);
+  assert.match(html, /Annually/);
+  assert.match(html, /Lifetime/);
+  const lifafaRow = html.match(/<tr class="lifafa-pricing-row"[\s\S]*?<\/tr>/)?.[0];
+  assert.ok(lifafaRow);
+  assert.equal((lifafaRow.match(/Disclosed soon/g) ?? []).length, 3);
+  assert.doesNotMatch(lifafaRow, /\$\d|€\d|₹\d/);
+  assert.match(html, /49\.99/);
+  assert.match(html, /39\.99/);
+  assert.match(html, /300/);
+  assert.match(html, /not free products/);
+  const lifafaCard = html.match(/<section class="lifafa-price-card"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(lifafaCard);
+  assert.doesNotMatch(lifafaCard, /\$\d|€\d|₹\d/);
+  const csv = await readFile(new URL("../public/lifafa-feature-comparison.csv", import.meta.url), "utf8");
+  assert.equal(csv.trim().split(/\r?\n/).length, 44);
+  for (const product of ["Mimestream", "Airmail", "Superhuman Mail"]) assert.ok(csv.includes(product));
+});

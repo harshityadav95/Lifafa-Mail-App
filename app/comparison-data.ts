@@ -1,4 +1,4 @@
-export type Feature = {
+type OriginalFeature = {
   name: string;
   category: string;
   lifafa: string;
@@ -6,7 +6,7 @@ export type Feature = {
   inboxzero: string;
 };
 // Vendor pages reviewed 24 October 2026. “Not listed” means unverified, not absent.
-export const comparison: Feature[] = [
+const originalComparison: OriginalFeature[] = [
   {
     category: "Mail",
     name: "Multiple accounts, one inbox",
@@ -317,3 +317,63 @@ export const comparison: Feature[] = [
       b.category,
     ),
 );
+
+
+export type Feature = OriginalFeature & {
+  mimestream: string;
+  airmail: string;
+  superhuman: string;
+};
+
+// Order: Mimestream, Airmail, Superhuman. Descriptive cells avoid treating
+// unverified capabilities or adjacent workflows as equivalent features.
+const additionalFeatures: Record<string, [string, string, string]> = {
+  "Multiple accounts, one inbox": ["Google accounts", "Gmail, Outlook, IMAP & more", "Gmail & Outlook"],
+  "Custom IMAP / SMTP accounts": ["Gmail API only", "IMAP / POP3 supported", "Gmail & Outlook only"],
+  "Sender threads & bulk actions": ["Conversations & triage", "Bulk actions", "Conversations & triage"],
+  "Folders, labels & search": ["Gmail labels & search", "Folders, filters & search", "Split Inbox & search"],
+  "Signatures & attachments": ["Not listed", "Supported", "Snippets with attachments"],
+  "Automatic offline caching": ["Not listed", "Local archived accounts", "Offline support listed"],
+  "Durable offline outbox": ["Not listed", "Not listed", "Not listed"],
+  "Calendar & contacts": ["Invite responses; calendar view", "Calendar & Contacts integrations", "Calendar & scheduling"],
+  "Mail in the Mac notch": ["Not listed", "Not listed", "Not listed"],
+  "Sign-in code shortcuts": ["Not listed", "Not listed", "Not listed"],
+  "Redacted message screenshots": ["Not listed", "Not listed", "Not listed"],
+  "Message translation": ["Not listed", "Not listed", "Not listed"],
+  "Open & click tracking": ["Not listed", "Read-receipt plugins on Mac", "Read statuses; Recent Opens"],
+  "Snooze / send later": ["Snooze (Labs)", "Both in Pro", "Both listed"],
+  "Email summaries": ["Not listed", "Not listed", "Auto Summarize"],
+  "AI-assisted replies": ["Not listed", "System Writing Tools", "AI replies; Auto Drafts in Business"],
+  "On-device Apple intelligence": ["Not listed", "System Writing Tools", "Not listed"],
+  "Bring your own AI provider": ["Not listed", "Not listed", "Not listed"],
+  "Automatic categorization": ["Gmail inbox categories", "Smart Inbox", "Auto Labels; custom AI in Business"],
+  "Editable rules & corrections": ["Server-side Gmail filters", "Rules & custom actions", "Custom AI labels in Business"],
+  "Email-linked To Do": ["Not listed", "Marked-email To Do widget", "Remind Me & follow-ups"],
+  "Exact quote for each work action": ["Not listed", "Not listed", "Not listed"],
+  "Review before external actions": ["Not listed", "Custom-action automation", "AI automation available"],
+  "Apple Reminders export": ["Not listed", "Apple Reminder integration", "Not listed"],
+  "Siri, Shortcuts & Spotlight": ["Not listed", "App Intents integrations", "Not listed"],
+  "Bulk newsletter unsubscribe": ["Not listed", "Not listed", "Unsubscribe listed"],
+  "Cold email blocking": ["Not listed", "Not listed", "Block listed"],
+  "Mail analytics & digests": ["Not listed", "Not listed", "Team analytics in Enterprise"],
+  "Slack, Teams, CRM & meeting tools": ["Not listed", "Third-party app integrations", "Meeting tools; CRM in Business"],
+  "Direct mail-provider connection": ["Direct Gmail API; no relay", "Local Privacy Mode option", "Not listed"],
+  "Remote-content controls": ["Tracking prevention", "Privacy Mode blocks images", "Not listed"],
+  "Encrypted derived-work sync": ["Not listed", "Settings sync; work sync unverified", "Not listed"],
+  "Native Apple apps": ["Mac; iPhone & iPad beta⁵", "iPhone, iPad, Mac & more", "Mac & iOS apps listed"],
+  "Web, Windows & Android": ["Not listed", "Not listed", "Web, Windows & Android"],
+  "Keyboard shortcuts": ["Native Mac shortcuts", "iPad keyboard support", "Keyboard-first workflow"],
+  "Appearance & themes": ["Dark-mode reformatting", "Themes & customization", "Not listed"],
+  "Mail export": ["Not listed", "Searchable PDF", "Not listed"],
+  "Mail notifications": ["Native notifications", "Local / push options", "Not listed"],
+  "Team comments & mentions": ["Not listed", "Not listed", "Shared conversations & comments"],
+  "Automatic attachment filing": ["Not listed", "Not listed", "Not listed"],
+  "Knowledge base for AI context": ["Not listed", "Not listed", "Knowledge Base listed"],
+  "Self-hosted assistant": ["Not listed", "Not listed", "Not listed"],
+  "Availability": ["Paid Mac app; limited iOS beta⁵", "Free basics + Pro subscription", "Paid Starter, Business & Enterprise"],
+};
+
+export const comparison: Feature[] = originalComparison.map((row) => {
+  const [mimestream, airmail, superhuman] = additionalFeatures[row.name];
+  return { ...row, mimestream, airmail, superhuman };
+});

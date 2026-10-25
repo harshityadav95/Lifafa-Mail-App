@@ -59,3 +59,23 @@ final result: passed
 - [x] Static export and project-path asset handling verified.
 - [x] Legal routes and source-backed capability boundaries retained.
 - [x] Local static preview left running for review.
+
+## Competition and pricing follow-up — 24 October 2026
+
+- Added Mimestream, Airmail and Superhuman Mail to all 43 feature rows and the matching CSV. Browser inspection confirmed seven table headers (feature plus six products), all 43 body rows, and three rows when filtering Platforms.
+- Added `/pricing/`, with the existing brand, pixel accent, green Lifafa announcement card, paper-ticket illustration, five competitor cards, workflow analysis and FAQ disclosures. Pricing is reachable from desktop navigation, a compact phone header link, the footer and the comparison notes.
+- Browser-tested annual → monthly → annual. Monthly card values were $4.99, $7.99, $30, $49.99 one time and $20; yearly equivalents were $4.17, $3.33, $25, $49.99 one time and $18. Annual totals and billing units remain visible. Lifafa's card has no numeric price.
+- Reviewed pricing at 1280 × 850 and 390 × 844; checked comparison at 1280 × 850 and 320 × 760. No document overflow in the measured phone views; the wide feature table has its own focusable scroll region and sticky feature labels. Screenshots: `build/qa/pricing-desktop-market.png`, `build/qa/pricing-mobile.png`, `build/qa/comparison-six-products.png`.
+- Live US App Store Airmail prices ($39.99/year, $7.99/month) override the help center's conflicting older rates in the headline comparison. Both sources and the discrepancy are shown.
+- `npm test`: production static export and all four rendered-HTML tests passed, including the new pricing route and undisclosed Lifafa amount. App-only TypeScript check and `git diff --check` passed. Both browser pages returned no warning/error entries during this QA.
+- Local-only work: no commit, push, publication, hosting change or native-app change. Competitor features and checkout eligibility were researched, not behavior-tested. No physical-device or VoiceOver acceptance is claimed.
+
+### Pricing table revision — 25 October 2026
+
+Replaced pricing cards and the billing switch with simultaneous Monthly, Annually and Lifetime columns. The five competitor rows precede a green Lifafa footer row with three “Disclosed soon” values; no Lifafa amount is disclosed. Moved the larger Lifafa panel below the comparison. Retained plan caveats and links in a native disclosure.
+
+Browser inspection verified every value and the final Lifafa row. Desktop table capture: `build/qa/pricing-table-desktop.png`. At 390 × 844, document width was 375px and table region width was 333px with 790px of contained scroll content; the document did not overflow. Phone capture: `build/qa/pricing-table-mobile.png`. Restored the viewport after QA. Prices retain their original 24 October review date.
+
+### Pricing order — 25 October 2026
+
+Pinned Lifafa as the first highlighted body row. Competitors sort by ascending monthly price, with unpublished monthly rates last. Browser row inspection confirmed Lifafa, Mimestream, Airmail, Inbox Zero, Superhuman Mail, GotEmail. All three Lifafa values remain “Disclosed soon.” Production build and all four existing tests passed; `git diff --check` passed. Capture: `build/qa/pricing-table-ascending.png`.

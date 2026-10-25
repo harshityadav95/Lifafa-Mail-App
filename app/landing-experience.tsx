@@ -595,8 +595,8 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           <p>
             Different approaches. An honest comparison.
             <br />
-            See what Lifafa is building alongside GotEmail
-            <br className="desktop-break" /> and Inbox Zero.
+            Six approaches, from native Gmail to AI automation.
+            <br className="desktop-break" /> Compare the details. Choose what fits.
           </p>
         </div>
         <div
@@ -623,7 +623,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           ))}
         </div>
         <p className="table-scroll-hint">
-          Swipe to compare all three apps <ArrowRight size={13} />
+          Scroll to compare all six apps <ArrowRight size={13} />
         </p>
         <div
           className="table-scroll"
@@ -631,9 +631,9 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           role="region"
           aria-label="Feature comparison, scroll horizontally on small screens"
         >
-          <table>
+          <table className="feature-comparison-table">
             <caption className="sr-only">
-              Lifafa Mail, GotEmail and Inbox Zero feature comparison. Vendor
+              Lifafa Mail, GotEmail, Inbox Zero, Mimestream, Airmail and Superhuman Mail feature comparison. Vendor
               claims reviewed 24 October 2026.
             </caption>
             <thead>
@@ -657,6 +657,9 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                 <th scope="col">
                   Inbox Zero<span>The automation approach</span>
                 </th>
+                <th scope="col">Mimestream<span>The Gmail specialist</span></th>
+                <th scope="col">Airmail<span>The customizable approach</span></th>
+                <th scope="col">Superhuman Mail<span>The team productivity approach</span></th>
               </tr>
             </thead>
             <tbody>
@@ -666,7 +669,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                     {r.name}
                     <span>{r.category}</span>
                   </th>
-                  {[r.lifafa, r.gotemail, r.inboxzero].map((value, i) => (
+                  {[r.lifafa, r.gotemail, r.inboxzero, r.mimestream, r.airmail, r.superhuman].map((value, i) => (
                     <td
                       className={`${i === 0 ? "lifafa-col" : ""} ${value === "Not available" || value === "Not listed" ? "muted-cell" : ""}`}
                       key={i}
@@ -694,12 +697,13 @@ export function LandingExperience({ basePath }: { basePath: string }) {
             Lifafa’s ChatGPT public release remains gated; Cloudflare is
             separately authorized for private testing. ⁴ Implemented Apple
             integrations still require device, permission and cross-device
-            acceptance checks.
+            acceptance checks. ⁵ Mimestream’s iPhone/iPad beta requires an eligible renewing subscription and available TestFlight capacity.
           </p>
           <div>
             <a href={`${basePath}/lifafa-feature-comparison.csv`} download>
               Download the comparison <ArrowUpRight size={12} />
             </a>{" "}
+            <a href={`${basePath}/pricing/`}>Compare pricing <ArrowUpRight size={12} /></a>
             Explore the sources{" "}
             <a href="https://gotemail.net/" target="_blank" rel="noreferrer">
               GotEmail <ArrowUpRight size={12} />
@@ -718,6 +722,9 @@ export function LandingExperience({ basePath }: { basePath: string }) {
             >
               Inbox Zero Mail <ArrowUpRight size={12} />
             </a>
+            <a href="https://mimestream.com/" target="_blank" rel="noreferrer">Mimestream <ArrowUpRight size={12} /></a>
+            <a href="https://airmailapp.com/" target="_blank" rel="noreferrer">Airmail <ArrowUpRight size={12} /></a>
+            <a href="https://superhuman.com/mail" target="_blank" rel="noreferrer">Superhuman Mail <ArrowUpRight size={12} /></a>
           </div>
         </div>
       </section>
