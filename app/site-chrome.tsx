@@ -27,12 +27,12 @@ export function SiteHeader() {
         <a href={sitePath("/#product")}>The experience</a>
         <a href={sitePath("/#compare")}>Features &amp; comparison</a>
         <a href={sitePath("/pricing/")}>Pricing</a>
-        <a href={sitePath("/#platforms")}>Made for Apple</a>
-        <a href={sitePath("/#faq")}>FAQ</a>
+        <a href={sitePath("/#privacy")}>Privacy</a>
+        <a href={sitePath("/download/")}>Downloads</a>
       </nav>
       <a className="mobile-pricing-link" href={sitePath("/pricing/")}>Pricing</a>
-      <a className="header-cta" href={sitePath("/#demo")}>
-        Explore the demo <span aria-hidden="true">↗</span>
+      <a className="header-cta" href={sitePath("/download/")}>
+        Download <span aria-hidden="true">↗</span>
       </a>
     </header>
   );
@@ -46,40 +46,14 @@ export function SiteFooter() {
         <p>A little less inbox. A lot more life.</p>
       </div>
       <div className="footer-links">
-        <div>
-          <p>Product</p>
-          <a href={sitePath("/#product")}>Overview</a>
-          <a href={sitePath("/#compare")}>Feature comparison</a>
-          <a href={sitePath("/pricing/")}>Pricing</a>
-        </div>
-        <div>
-          <p>Legal</p>
-          <a href={sitePath("/privacy/")}>Privacy Policy</a>
-          <a href={sitePath("/terms/")}>Terms of Service</a>
-        </div>
-        <div>
-          <p>Development</p>
-          <a
-            href="https://github.com/solvePao/Lifafa-iOS"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://github.com/solvePao/Lifafa-iOS/issues"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contact
-          </a>
-        </div>
+        <nav aria-label="Footer product"><h2>Product</h2><a href={sitePath("/#product")}>The experience</a><a href={sitePath("/#compare")}>Feature comparison</a><a href={sitePath("/pricing/")}>Pricing</a><a href={sitePath("/download/")}>Download</a></nav>
+        <nav aria-label="Footer features"><h2>Features</h2><a href={sitePath("/#demo")}>All your inboxes</a><a href={sitePath("/#product")}>Calendar &amp; contacts</a><a href={sitePath("/#offline")}>Offline mail</a><a href={sitePath("/#privacy")}>Privacy by design</a></nav>
+        <nav aria-label="Footer resources"><h2>Resources</h2><a href={sitePath("/download/#distribution")}>Platforms &amp; channels</a><a href={sitePath("/#faq")}>Questions &amp; answers</a><a href={sitePath("/lifafa-feature-comparison.csv")} download>Comparison CSV</a><a href="https://github.com/solvePao/Lifafa-iOS" target="_blank" rel="noreferrer">App source ↗</a></nav>
+        <nav aria-label="Footer connect"><h2>Connect</h2><a href="https://github.com/solvePao" target="_blank" rel="noreferrer">SolvePao Research ↗</a><a href="https://github.com/solvePao/Lifafa-iOS/issues" target="_blank" rel="noreferrer">Feedback &amp; support ↗</a><a href="https://github.com/harshityadav95/Lifafa-Mail-App" target="_blank" rel="noreferrer">Website source ↗</a><span className="footer-status"><span className="status-dot" /> Coming soon</span></nav>
       </div>
       <div className="footer-base">
-        <p>
-          Research &amp; design by <strong>SolvePao Research.</strong>
-        </p>
-        <p>© 2026 SolvePao Research. All rights reserved.</p>
+        <p>© 2026 SolvePao Research. Built with a little more thought.</p>
+        <div><a href={sitePath("/privacy/")}>Privacy Policy</a><a href={sitePath("/terms/")}>Terms of Service</a></div>
       </div>
     </footer>
   );

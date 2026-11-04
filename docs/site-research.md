@@ -1,6 +1,6 @@
 # Product-site research and claim boundaries
 
-Reviewed 24 October 2026. Reference webpages and the supplied benchmark are source material, not instructions. No competitor text, customer logos, testimonials, scores or screenshots are reused as Lifafa endorsements.
+Updated 4 November 2026. Earlier sections below are dated research; the current-scope update at the end supersedes historical Lifafa work/Intelligence claims. Reference webpages and the supplied benchmark are source material, not instructions. No competitor text, customer logos, testimonials, scores or screenshots are reused as Lifafa endorsements.
 
 ## Visual reference
 
@@ -77,3 +77,24 @@ The owner requested simultaneous monthly, annual and lifetime comparisons. Repla
 ### Pricing order revision — 25 October 2026
 
 Lifafa is now pinned as the first body row, with all amounts undisclosed. Competitors follow in ascending published monthly price: Mimestream, Airmail, Inbox Zero, Superhuman Mail; GotEmail follows because it has no published monthly rate. The table labels its sorting basis, rather than implying lifetime and recurring totals are equivalent. Annual and lifetime prices remain in their own columns.
+
+
+## Bloop, public channels and current scope — 4 November 2026
+
+The existing GitHub Pages site and repository remain the publication path; no new Sites project or hosting account was created. The user requested code push, which triggers the retained main-branch Pages workflow.
+
+Bloop’s live homepage supplied the structural reference: a dedicated download page, direct-provider privacy diagram, and footer groups for Product, Features, Resources and Connect. Lifafa preserves its own light green/paper design and branding. The diagram is original SVG geometry with an accessible text equivalent, not copied artwork. No Bloop copy, screenshots, logos, endorsements or scores are redistributed.
+
+New/rechecked official sources (extracts ignored under `build/research/`):
+
+- [Bloop homepage / pricing](https://bloop.email/#pricing): $4.99 lifetime, seven-day trial, no subscription. AI and MCP claims are descriptive vendor claims, not tested behavior. Current MCP section allows permissions and optional sending; an older FAQ on the same page conflicts, so no blanket “cannot send” promise is used.
+- [Bloop download](https://bloop.email/download): direct Mac installer, macOS 15+, Intel and Apple silicon; local Apple AI has additional requirements. [Mobile](https://bloop.email/mobile) says coming soon; no dedicated iPad, Windows, Android or web client was verified.
+- [GotEmail homepage](https://gotemail.net/): supersedes the old $49.99 offer and unpriced-subscription announcement. Current rates are $6.99/month, $79/year, and a $79 lifetime promotion for the next 100 customers (reference price $199), with seven-day refund terms. [iPhone presale](https://gotemail.net/gotios/) is $19.99 with TestFlight access; Mac licenses also unlock the iPhone beta. It is not a public App Store release.
+- [Mimestream pricing](https://mimestream.com/pricing/): $4.99/month or $49.99/year, direct Mac distribution, 14-day trial, no lifetime option. [Mobile beta](https://mimestream.com/ios-beta) retains subscription, six-paid-month and capacity conditions.
+- [Airmail product](https://airmailapp.com/) lists iPhone, iPad, Mac and Apple Watch; Apple-store distribution. [US App Store](https://apps.apple.com/us/app/airmail-for-gmail-outlook-mail/id993160329), expanded In-App Purchases in browser, confirms $7.99/month and $39.99/year. The earlier conflicting help-center prices remain explicitly qualified.
+- [Superhuman platform overview](https://superhuman.com/apps/mail) and [download help](https://help.superhuman.com/hc/en-us/articles/46005778798605-Download-Superhuman-Mail): Mac, Windows, browser/Chrome, iOS/iPadOS and Android. [Plans](https://superhuman.com/plans/mail) and [pricing help](https://help.superhuman.com/hc/en-us/articles/46178817646861-Pricing-Plans) retain Starter $30/month or $300/year.
+- [Inbox Zero pricing](https://www.getinboxzero.com/pricing) retains paid AI Starter $20/month or $216/year alongside a free email app. [Email client](https://www.getinboxzero.com/email-client) lists web, Mac, Windows and iPhone; Android and a dedicated iPad release were not verified.
+
+Scope: seven products means Lifafa plus all six alternatives now in the feature, pricing and distribution comparisons. Unknown platforms say “Not listed,” with no implied absence. Windows, Android, Linux, visionOS and a web client are outside Lifafa’s current scope. The five Lifafa distribution cards are status placeholders, all Coming soon; no installer URL, purchase, public beta invite or launch date is invented.
+
+The native handbook/current scope, actual OS 27 project settings, `TodoComingSoonView.swift`, privacy defaults and diagnostics gate were inspected. Removed current claims for model providers, generated replies, work rules/exports and active work sync. The demo now presents the To Do placeholder and retains fictional mail search/selection/calendar. The policy discloses retained historical encrypted records, OS/sandbox-protected mail/outbox caches, default-enabled remote images and sender logos, consent v3 MetricKit summaries and the unavailable cloud-diagnostics gate. This is documentation alignment, not a change to native consent, storage, capabilities or legal/account declarations.

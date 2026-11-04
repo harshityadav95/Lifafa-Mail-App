@@ -23,8 +23,8 @@ import {
   X,
   CheckCircle,
   LinkSimple,
-  ArrowCounterClockwise,
 } from "@phosphor-icons/react";
+import { PrivacyFlow } from "./privacy-flow";
 import { comparison } from "./comparison-data";
 
 const mail = [
@@ -98,25 +98,25 @@ const featureTabs = [
     detail: "Sender threads · Folders & labels · Account-scoped replies",
   },
   {
-    name: "Email → action",
+    name: "To Do · Coming soon",
     icon: Checks,
-    title: "Find the next step in the thread.",
-    copy: "Requests, commitments and things you’re waiting on, connected to the exact words in the original email. Review, correct and decide what happens next.",
-    detail: "Needs You · Review · Waiting · Original evidence",
+    title: "A little room for what’s next.",
+    copy: "To Do is coming soon. Existing manual tasks remain under Previous Tasks in the app; new task creation and email-work processing are not available.",
+    detail: "Coming soon · Previous Tasks retained",
   },
   {
     name: "Your day, connected",
     icon: CalendarBlank,
     title: "A little less app switching.",
-    copy: "Keep mail, calendar and contacts in one native workspace. Export accepted email work to Apple Reminders when you choose.",
-    detail: "Calendar · Contacts · User-requested exports",
+    copy: "Keep mail, calendar and contacts in one native workspace. Contacts and calendar access require your permission.",
+    detail: "Calendar · Contacts · Native permissions",
   },
   {
     name: "Private by choice",
     icon: ShieldCheck,
-    title: "An assistant. You’re still in charge.",
-    copy: "Intelligence is optional. Use Apple’s on-device model when your device is eligible, review generated drafts, and keep using mail when intelligence is off.",
-    detail: "Opt-in intelligence · Reviewed drafts · Remote-content controls",
+    title: "Your mail. A direct connection.",
+    copy: "Lifafa connects directly to your mail providers. Credentials use Apple Keychain, with controls for remote images, sender logos and Secure Mode.",
+    detail: "Direct connections · Keychain credentials · Privacy controls",
   },
 ];
 export function LandingExperience({ basePath }: { basePath: string }) {
@@ -125,7 +125,6 @@ export function LandingExperience({ basePath }: { basePath: string }) {
   const [view, setView] = useState("Inbox");
   const [filter, setFilter] = useState("All features");
   const [query, setQuery] = useState("");
-  const [done, setDone] = useState<number[]>([]);
   const [dialog, setDialog] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -164,14 +163,14 @@ export function LandingExperience({ basePath }: { basePath: string }) {
         <div className="floating-card float-todo" aria-hidden="true">
           <span className="micro-label">A LITTLE CLARITY · TO DO</span>
           <h3>
-            That next step?
+            A little room
             <br />
-            Already found.
+            for what’s next.
           </h3>
-          <p>Review the launch notes</p>
+          <p>To Do is coming soon</p>
           <div className="mini-task">
             <CheckCircle weight="fill" />
-            <span>Linked to the original email</span>
+            <span>Previous Tasks retained</span>
           </div>
         </div>
         <div className="floating-card float-mail" aria-hidden="true">
@@ -220,7 +219,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
             you’ll ever <span className="pixel-word">need.</span>
           </h1>
           <p className="hero-deck">
-            All your inboxes. Your next steps. A little more headspace.
+            All your inboxes. Your day, together. A little more headspace.
             <br className="desktop-break" /> Meet the native email workspace
             that brings your day together.
           </p>
@@ -235,7 +234,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           <p className="hero-note">
             <Desktop size={15} />
             <DeviceMobile size={14} /> Made for iPhone, iPad &amp; Mac{" "}
-            <span>·</span> In development
+            <span>·</span> Coming soon
           </p>
         </div>
         <a className="scroll-cue" href="#product">
@@ -320,7 +319,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
             <span>
               <span className="status-dot" /> TAKE A LOOK AROUND
             </span>
-            <span>Interactive preview · Fictional sample mail</span>
+            <span>Interactive preview · Fictional sample mail · To Do coming soon</span>
           </div>
           <div className="demo-workspace">
             <aside className="workspace-sidebar">
@@ -358,7 +357,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                     {item.name === "Inbox"
                       ? "4"
                       : item.name === "To Do"
-                        ? 3 - done.length
+                        ? "Soon"
                         : ""}
                   </span>
                 </button>
@@ -382,12 +381,12 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                   {view === "Inbox"
                     ? "All inboxes"
                     : view === "To Do"
-                      ? "Email work"
+                      ? "To Do · Coming soon"
                       : "Your calendar"}
                 </b>
                 <span className="demo-only">SAMPLE WORKSPACE</span>
               </div>
-              {view === "Calendar" ? (
+              {view === "To Do" ? (<div className="todo-placeholder"><Checks size={38} /><span className="kicker">A LITTLE ROOM FOR WHAT’S NEXT</span><h3>To Do is coming soon.</h3><p>Existing manual tasks remain under Previous Tasks in the app.<br />There is no new task creation or email-work processing.</p></div>) : view === "Calendar" ? (
                 <div className="calendar-demo">
                   <span className="kicker">OCTOBER 2026</span>
                   <h3>A little room for your day.</h3>
@@ -410,8 +409,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                     </div>
                   </div>
                   <p className="calendar-disclaimer">
-                    Illustration of a reviewed calendar event. Lifafa keeps
-                    original date expressions for your review.
+                    Fictional sample calendar event. Calendar access in the app requires your permission.
                   </p>
                 </div>
               ) : (
@@ -452,7 +450,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                         <span
                           className={`tag ${m.index === 2 ? "tag-purple" : m.index === 3 ? "tag-gray" : ""}`}
                         >
-                          {done.includes(m.index) ? "Done" : m.tag}
+                          {m.tag}
                         </span>
                       </button>
                     ))}
@@ -501,55 +499,22 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                       {active.file}
                       <span>Illustrative attachment</span>
                     </div>
-                    <div className="evidence-box">
-                      <span className="micro-label">
-                        <Sparkle size={13} /> FROM THE EMAIL, TO YOUR DAY
-                      </span>
-                      <b>{active.action}</b>
-                      <blockquote>“{active.quote}”</blockquote>
-                      <div>
-                        <span>
-                          <LinkSimple size={12} /> Original words. Clear
-                          context.
-                        </span>
-                        {selected < 3 && (
-                          <button
-                            className={done.includes(selected) ? "is-done" : ""}
-                            onClick={() =>
-                              setDone(
-                                done.includes(selected)
-                                  ? done.filter((i) => i !== selected)
-                                  : [...done, selected],
-                              )
-                            }
-                          >
-                            {done.includes(selected) ? (
-                              <ArrowCounterClockwise size={13} />
-                            ) : (
-                              <Check size={13} />
-                            )}
-                            {done.includes(selected) ? "Undo" : "Mark done"}
-                          </button>
-                        )}
-                      </div>
-                    </div>
                   </article>
                 </div>
               )}
             </div>
           </div>
           <p className="demo-footnote">
-            <Command size={13} /> Try the tabs, choose a message, or mark a
-            sample action done.{" "}
-            <span role="status" aria-live="polite">
-              {done.length > 0
-                ? `${done.length} sample action${done.length > 1 ? "s" : ""} completed. No email sent.`
-                : "This preview doesn’t connect to your inbox."}
-            </span>
+            <Command size={13} /> Try the tabs, choose a message, or search the sample inbox. This preview doesn’t connect to your inbox. To Do is coming soon.
           </p>
         </div>
       </section>
-      <section className="benefits section-shell">
+      <section className="privacy-section section-shell" id="privacy" aria-labelledby="privacy-heading">
+        <div className="privacy-section-heading"><div><span className="kicker">PERSONAL MEANS PERSONAL</span><h2 id="privacy-heading">Your inbox.<br /><span>A direct connection.</span></h2></div><div><p>Lifafa talks directly to Gmail, Outlook, iCloud or your IMAP provider. There’s no Lifafa mail relay in the middle. Your credentials stay in Apple Keychain.</p><a href={`${basePath}/privacy/`}>Read our privacy policy <ArrowUpRight size={15} /></a></div></div>
+        <PrivacyFlow />
+        <div className="privacy-facts"><div><b>On your device</b><p>Mail caches and the offline outbox use OS and sandbox protection. They are not all encrypted with a Lifafa application key.</p></div><div><b>Your controls</b><p>Remote images and sender logos can contact external servers. Control them in privacy settings or use Secure Mode.</p></div><div><b>Diagnostics by choice</b><p>Local diagnostics are opt-in. Cloud diagnostic sharing remains unavailable pending readiness checks. No AI mail processing is included.</p></div></div>
+      </section>
+      <section className="benefits section-shell" id="offline">
         <div className="benefit">
           <WifiSlash size={25} />
           <h3>Your inbox travels with you.</h3>
@@ -561,21 +526,18 @@ export function LandingExperience({ basePath }: { basePath: string }) {
         </div>
         <div className="benefit">
           <Sparkle size={25} />
-          <h3>A little intelligence. By invitation.</h3>
+          <h3>Your day, in good company.</h3>
           <p>
-            Optional Apple intelligence helps summarize and draft on eligible
-            devices. Mail, rules and saved work stay useful with it switched
-            off.
+            Mail, calendar and contacts share one native workspace. To Do is coming soon; the current app does not include AI mail processing.
           </p>
-          <span>HELP WHEN YOU WANT IT</span>
+          <span>A LITTLE LESS APP SWITCHING</span>
         </div>
         <div className="benefit">
           <LockKey size={25} />
           <h3>Personal means personal.</h3>
           <p>
             Direct connections to your mail providers. Keychain credentials.
-            Remote-content controls. Optional encrypted iCloud sync for derived
-            work.
+            Remote-content controls and Secure Mode. Clear choices about what can leave your device.
           </p>
           <a href={`${basePath}/privacy/`}>
             Your privacy, explained <ArrowUpRight size={13} />
@@ -595,7 +557,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           <p>
             Different approaches. An honest comparison.
             <br />
-            Six approaches, from native Gmail to AI automation.
+            Seven approaches, from native Gmail to AI automation.
             <br className="desktop-break" /> Compare the details. Choose what fits.
           </p>
         </div>
@@ -623,7 +585,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           ))}
         </div>
         <p className="table-scroll-hint">
-          Scroll to compare all six apps <ArrowRight size={13} />
+          Scroll to compare all seven apps <ArrowRight size={13} />
         </p>
         <div
           className="table-scroll"
@@ -633,14 +595,13 @@ export function LandingExperience({ basePath }: { basePath: string }) {
         >
           <table className="feature-comparison-table">
             <caption className="sr-only">
-              Lifafa Mail, GotEmail, Inbox Zero, Mimestream, Airmail and Superhuman Mail feature comparison. Vendor
-              claims reviewed 24 October 2026.
+              Lifafa Mail, GotEmail, Inbox Zero, Mimestream, Airmail, Superhuman Mail and Bloop.email feature comparison. Existing vendor features reviewed 24 October 2026; Lifafa and Bloop updated 4 November 2026.
             </caption>
             <thead>
               <tr>
                 <th scope="col">
                   The things that matter
-                  <span>{rows.length} features · Reviewed Oct 24, 2026</span>
+                  <span>{rows.length} features · See review dates below</span>
                 </th>
                 <th scope="col" className="lifafa-col">
                   <img
@@ -649,7 +610,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                     height="23"
                     alt=""
                   />
-                  Lifafa Mail<span>Native. Connected. Yours.</span>
+                  Lifafa Mail<span>Coming soon · In development</span>
                 </th>
                 <th scope="col">
                   GotEmail<span>The native Mac approach</span>
@@ -660,6 +621,7 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                 <th scope="col">Mimestream<span>The Gmail specialist</span></th>
                 <th scope="col">Airmail<span>The customizable approach</span></th>
                 <th scope="col">Superhuman Mail<span>The team productivity approach</span></th>
+                <th scope="col">Bloop.email<span>The Mac lifetime-license approach</span></th>
               </tr>
             </thead>
             <tbody>
@@ -669,12 +631,12 @@ export function LandingExperience({ basePath }: { basePath: string }) {
                     {r.name}
                     <span>{r.category}</span>
                   </th>
-                  {[r.lifafa, r.gotemail, r.inboxzero, r.mimestream, r.airmail, r.superhuman].map((value, i) => (
+                  {[r.lifafa, r.gotemail, r.inboxzero, r.mimestream, r.airmail, r.superhuman, r.bloop].map((value, i) => (
                     <td
                       className={`${i === 0 ? "lifafa-col" : ""} ${value === "Not available" || value === "Not listed" ? "muted-cell" : ""}`}
                       key={i}
                     >
-                      {i === 0 && !value.startsWith("Not ") && (
+                      {i === 0 && !value.startsWith("Not ") && !value.startsWith("Coming soon") && !value.startsWith("Historical") && (
                         <Check size={13} />
                       )}
                       {value}
@@ -693,18 +655,16 @@ export function LandingExperience({ basePath }: { basePath: string }) {
             public-release promise. No weighted scores.
           </p>
           <p>
-            ¹ Inbox Zero’s email-app page. ² GotEmail 0.8 feature benchmark; some features aren’t detailed on its homepage. ³
-            Lifafa’s ChatGPT public release remains gated; Cloudflare is
-            separately authorized for private testing. ⁴ Implemented Apple
-            integrations still require device, permission and cross-device
-            acceptance checks. ⁵ Mimestream’s iPhone/iPad beta requires an eligible renewing subscription and available TestFlight capacity.
+            Existing competitor feature claims: 24 October 2026. Lifafa and Bloop: 4 November 2026. ¹ Inbox Zero’s email-app page. ² Historical GotEmail 0.8 benchmark. Lifafa Intelligence and email-work features were removed on 28 October; To Do is coming soon. ⁵ Mimestream’s mobile beta requires an eligible renewing subscription and capacity. Pricing and distribution have their own 4 November review.
           </p>
           <div>
             <a href={`${basePath}/lifafa-feature-comparison.csv`} download>
               Download the comparison <ArrowUpRight size={12} />
             </a>{" "}
             <a href={`${basePath}/pricing/`}>Compare pricing <ArrowUpRight size={12} /></a>
+            <a href={`${basePath}/download/#distribution`}>Compare distribution <ArrowUpRight size={12} /></a>
             Explore the sources{" "}
+            <a href="https://bloop.email/" target="_blank" rel="noreferrer">Bloop.email <ArrowUpRight size={12} /></a>
             <a href="https://gotemail.net/" target="_blank" rel="noreferrer">
               GotEmail <ArrowUpRight size={12} />
             </a>
@@ -740,22 +700,23 @@ export function LandingExperience({ basePath }: { basePath: string }) {
           <div>
             <DeviceMobile size={29} />
             <b>iPhone</b>
-            <span>iOS 27+</span>
+            <span>iOS 27+ · Coming soon</span>
             <p>Your next step, on the go.</p>
           </div>
           <div>
             <CalendarBlank size={29} />
             <b>iPad</b>
-            <span>iPadOS 27+</span>
+            <span>iPadOS 27+ · Coming soon</span>
             <p>A little more room to think.</p>
           </div>
           <div>
             <Desktop size={29} />
             <b>Mac</b>
-            <span>macOS 27+</span>
+            <span>macOS 27+ · Coming soon</span>
             <p>A workspace for the whole day.</p>
           </div>
         </div>
+        <a className="platform-download-link" href={`${basePath}/download/`}>See all download channels <ArrowUpRight size={16} /></a>
       </section>
       <section className="faq-section section-shell" id="faq">
         <div>
@@ -774,15 +735,15 @@ export function LandingExperience({ basePath }: { basePath: string }) {
             ],
             [
               "Do I have to use AI?",
-              "No. Intelligence is off by default in ordinary builds. Mail, manual corrections, rules and saved work remain usable without Apple Intelligence. Optional local processing depends on model and device availability.",
+              "No. The current Lifafa app does not include Intelligence, model providers, classification or generated replies. To Do is coming soon. Mail, calendar, contacts, caching and the outbox work independently.",
             ],
             [
               "Does Lifafa send emails or complete tasks for me?",
-              "You stay in control. Generated replies go through review and the composer. Marking an email-work action done does not send, pay, approve, sign or cancel anything externally.",
+              "You compose and send your own email through the existing composer. To Do is coming soon. Completing a retained Previous Task does not send, pay, approve, sign or cancel anything externally.",
             ],
             [
               "What stays on my device?",
-              "Mailbox caching is local, and credentials use Apple Keychain. Derived work is stored in encrypted envelopes; optional private iCloud sync uses a separate key. Mailbox and outbox caches rely on OS and sandbox protection. Connected mail providers and any separately authorized processing still receive the data required for those functions. See our privacy policy for the complete details.",
+              "Mailbox caching is local, and credentials use Apple Keychain. Mailbox and outbox caches rely on OS and sandbox protection. Historical encrypted work data is retained, with its former sync no longer available. Mail providers and permitted external content still receive the data needed for those functions. See our privacy policy for details.",
             ],
             [
               "Is this a web email app?",

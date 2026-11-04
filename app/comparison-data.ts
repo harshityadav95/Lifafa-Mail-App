@@ -5,7 +5,7 @@ type OriginalFeature = {
   gotemail: string;
   inboxzero: string;
 };
-// Vendor pages reviewed 24 October 2026. “Not listed” means unverified, not absent.
+// Existing competitor features reviewed 24 October 2026; Bloop and Lifafa updated 4 November 2026. “Not listed” means unverified, not absent.
 const originalComparison: OriginalFeature[] = [
   {
     category: "Mail",
@@ -101,84 +101,84 @@ const originalComparison: OriginalFeature[] = [
   {
     category: "Mail",
     name: "Snooze / send later",
-    lifafa: "Work-item snooze only",
+    lifafa: "Not available",
     gotemail: "Supported²",
     inboxzero: "Supported¹",
   },
   {
     category: "Intelligence",
     name: "Email summaries",
-    lifafa: "Optional, eligible devices",
+    lifafa: "Not available",
     gotemail: "On demand",
     inboxzero: "AI plan",
   },
   {
     category: "Intelligence",
     name: "AI-assisted replies",
-    lifafa: "Local draft + review",
+    lifafa: "Not available",
     gotemail: "On demand",
     inboxzero: "Automatic AI drafts",
   },
   {
     category: "Intelligence",
     name: "On-device Apple intelligence",
-    lifafa: "Opt-in, when available",
+    lifafa: "Not available",
     gotemail: "Listed in benchmark²",
     inboxzero: "Not listed",
   },
   {
     category: "Intelligence",
     name: "Bring your own AI provider",
-    lifafa: "Public providers gated³",
+    lifafa: "Not available",
     gotemail: "Own key / local model²",
     inboxzero: "Self-host options",
   },
   {
     category: "Intelligence",
     name: "Automatic categorization",
-    lifafa: "Opt-in intent views",
+    lifafa: "Not available",
     gotemail: "Manual labels listed",
     inboxzero: "AI labels",
   },
   {
     category: "Intelligence",
     name: "Editable rules & corrections",
-    lifafa: "Ordered rules + field edits",
+    lifafa: "Not available",
     gotemail: "Not listed",
     inboxzero: "Plain-English rules",
   },
   {
     category: "Workflow",
     name: "Email-linked To Do",
-    lifafa: "Needs You, Review, Waiting",
+    lifafa: "Coming soon",
     gotemail: "Not listed",
     inboxzero: "Reply split only¹",
   },
   {
     category: "Workflow",
     name: "Exact quote for each work action",
-    lifafa: "Source-linked evidence",
+    lifafa: "Not available",
     gotemail: "Not listed",
     inboxzero: "Not listed",
   },
   {
     category: "Workflow",
     name: "Review before external actions",
-    lifafa: "Explicit user review",
+    lifafa: "Manual composer",
     gotemail: "Draft review",
     inboxzero: "Configurable automation",
   },
   {
     category: "Workflow",
     name: "Apple Reminders export",
-    lifafa: "User-requested export",
+    lifafa: "Not available",
     gotemail: "Not listed",
     inboxzero: "Not listed",
   },
   {
     category: "Workflow",
     name: "Siri, Shortcuts & Spotlight",
-    lifafa: "Opt-in Apple integrations⁴",
+    lifafa: "Not available",
     gotemail: "Not listed",
     inboxzero: "Not listed",
   },
@@ -227,14 +227,14 @@ const originalComparison: OriginalFeature[] = [
   {
     category: "Privacy",
     name: "Encrypted derived-work sync",
-    lifafa: "Opt-in private iCloud⁴",
+    lifafa: "Historical data retained; sync removed",
     gotemail: "Not listed",
     inboxzero: "Not listed",
   },
   {
     category: "Platforms",
     name: "Native Apple apps",
-    lifafa: "iPhone, iPad & Mac · 27+",
+    lifafa: "Coming soon · Apple OS 27+",
     gotemail: "Mac; iPhone beta",
     inboxzero: "iPhone + desktop",
   },
@@ -243,7 +243,7 @@ const originalComparison: OriginalFeature[] = [
     name: "Web, Windows & Android",
     lifafa: "Not available",
     gotemail: "Not listed",
-    inboxzero: "Available / Android update due",
+    inboxzero: "Web, Mac, Windows & iPhone",
   },
   {
     category: "Mail",
@@ -297,14 +297,14 @@ const originalComparison: OriginalFeature[] = [
   {
     category: "Privacy",
     name: "Self-hosted assistant",
-    lifafa: "Native app, no backend",
+    lifafa: "No AI assistant",
     gotemail: "Not listed",
     inboxzero: "Supported",
   },
   {
     category: "Platforms",
     name: "Availability",
-    lifafa: "In active development",
+    lifafa: "Coming soon",
     gotemail: "Paid Mac app / iOS beta",
     inboxzero: "Free app + paid AI",
   },
@@ -323,6 +323,7 @@ export type Feature = OriginalFeature & {
   mimestream: string;
   airmail: string;
   superhuman: string;
+  bloop: string;
 };
 
 // Order: Mimestream, Airmail, Superhuman. Descriptive cells avoid treating
@@ -373,7 +374,54 @@ const additionalFeatures: Record<string, [string, string, string]> = {
   "Availability": ["Paid Mac app; limited iOS beta⁵", "Free basics + Pro subscription", "Paid Starter, Business & Enterprise"],
 };
 
+// Bloop claims are taken from its homepage and download page, reviewed 4 Nov 2026.
+const bloopFeatures: Record<string, string> = {
+  "Multiple accounts, one inbox": "Gmail, Outlook, iCloud & IMAP",
+  "Custom IMAP / SMTP accounts": "Supported",
+  "Sender threads & bulk actions": "Threads & bulk actions",
+  "Folders, labels & search": "Local & server search",
+  "Signatures & attachments": "Supported",
+  "Automatic offline caching": "Mail syncs to Mac",
+  "Durable offline outbox": "Not listed",
+  "Calendar & contacts": "Calendar listed",
+  "Mail in the Mac notch": "Read & quick reply",
+  "Sign-in code shortcuts": "One-click copy",
+  "Redacted message screenshots": "Not listed",
+  "Message translation": "AI translation",
+  "Open & click tracking": "Not listed",
+  "Snooze / send later": "Both listed",
+  "Email summaries": "On demand",
+  "AI-assisted replies": "Suggested replies & drafts",
+  "On-device Apple intelligence": "Apple Intelligence",
+  "Bring your own AI provider": "Own keys / local models listed",
+  "Automatic categorization": "Important & Other",
+  "Editable rules & corrections": "Not listed",
+  "Email-linked To Do": "Waiting for Reply label",
+  "Exact quote for each work action": "Not listed",
+  "Review before external actions": "MCP permissions; send opt-in",
+  "Apple Reminders export": "Not listed",
+  "Siri, Shortcuts & Spotlight": "Not listed",
+  "Bulk newsletter unsubscribe": "Cleanup & unsubscribe",
+  "Cold email blocking": "Not listed",
+  "Mail analytics & digests": "Not listed",
+  "Slack, Teams, CRM & meeting tools": "Not listed",
+  "Direct mail-provider connection": "Direct from Mac; no relay",
+  "Remote-content controls": "Not listed",
+  "Encrypted derived-work sync": "Not listed",
+  "Native Apple apps": "Mac; iPhone coming soon",
+  "Web, Windows & Android": "Not listed",
+  "Keyboard shortcuts": "Custom / Gmail / Apple / Superhuman",
+  "Appearance & themes": "Light, dark & density controls",
+  "Mail export": "Not listed",
+  "Mail notifications": "Notch notifications",
+  "Team comments & mentions": "Not listed",
+  "Automatic attachment filing": "Not listed",
+  "Knowledge base for AI context": "Not listed",
+  "Self-hosted assistant": "Local MCP server; external AI apps",
+  "Availability": "Mac download; 7-day trial",
+};
+
 export const comparison: Feature[] = originalComparison.map((row) => {
   const [mimestream, airmail, superhuman] = additionalFeatures[row.name];
-  return { ...row, mimestream, airmail, superhuman };
+  return { ...row, mimestream, airmail, superhuman, bloop: bloopFeatures[row.name] ?? "Not listed" };
 });

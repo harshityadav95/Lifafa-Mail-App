@@ -14,7 +14,7 @@ if (basePath) {
   );
 }
 
-for (const route of ["privacy", "terms", "pricing"]) {
+for (const route of ["privacy", "terms", "pricing", "download"]) {
   const directory = new URL(`${route}/`, output);
   await mkdir(directory, { recursive: true });
   await copyFile(

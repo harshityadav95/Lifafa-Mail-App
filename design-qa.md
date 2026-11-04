@@ -79,3 +79,12 @@ Browser inspection verified every value and the final Lifafa row. Desktop table 
 ### Pricing order — 25 October 2026
 
 Pinned Lifafa as the first highlighted body row. Competitors sort by ascending monthly price, with unpublished monthly rates last. Browser row inspection confirmed Lifafa, Mimestream, Airmail, Inbox Zero, Superhuman Mail, GotEmail. All three Lifafa values remain “Disclosed soon.” Production build and all four existing tests passed; `git diff --check` passed. Capture: `build/qa/pricing-table-ascending.png`.
+
+## Website update — 4 November 2026
+
+- Preserved the existing website identity and GitHub Pages publishing path; native app working changes were not edited.
+- Built/exported all five public routes with the production `/Lifafa-Mail-App` base path. Six rendered-export tests passed. App-only TypeScript check passed using an ignored temporary config that excludes existing unused Cloudflare worker/database stubs. `git diff --check` passed.
+- Local browser review at 1280px: homepage privacy diagram, download hero/cards and footer visually inspected; pricing and distribution tables stayed in their scroll containers without page overflow. Seven pricing rows and five Coming soon channel cards were observed. Header Download navigation reached the dedicated page.
+- Browser interactions: sample search for Studio North returned one message; clearing restored the inbox; To Do showed its Coming soon placeholder; Privacy comparison filter displayed four matching rows and all seven product columns.
+- All exported internal route/fragment/CSV links were checked. No public installer, purchase action or TestFlight invitation was invented.
+- Responsive CSS includes single-column channel cards and privacy copy, two-column footer groups and horizontally scrollable tables. The browser viewport override did not change its reported 1280px width despite a 390px request and reload, so mobile visual verification remains incomplete. The temporary override was reset. No real-device app acceptance is claimed.

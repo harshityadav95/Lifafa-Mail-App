@@ -5,7 +5,7 @@ import { LandingExperience } from "./landing-experience";
 export const metadata: Metadata = {
   title: "The last email app you’ll ever need.",
   description:
-    "Meet Lifafa Mail. All your inboxes, email-linked To Do and your day, together in a native workspace for iPhone, iPad and Mac. In active development.",
+    "Meet Lifafa Mail. All your inboxes, calendar and contacts together in a native workspace for iPhone, iPad and Mac. In active development.",
 };
 export default function Home() {
   return (

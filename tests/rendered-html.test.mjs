@@ -15,7 +15,7 @@ test("exports the Lifafa Mail product page", async () => {
   assert.match(html, /GotEmail/);
   assert.match(html, /Inbox Zero/);
   assert.match(html, /Not available/);
-  assert.match(html, /Intelligence is off by default/);
+  assert.match(html, /does not include Intelligence/);
   assert.match(html, /does not send, pay, approve/);
   assert.match(html, /privacy\//);
   assert.match(html, /terms\//);
@@ -52,7 +52,7 @@ test("exports complete OAuth app-domain pages", async () => {
   assert.match(privacy, /Google API Services User Data Policy/);
   assert.match(privacy, /Limited Use requirements/);
   assert.match(privacy, /How data is used/);
-  assert.match(privacy, /23 October 2026/);
+  assert.match(privacy, /4 November 2026/);
   assert.match(privacy, /Privacy &amp; Diagnostics/);
   assert.match(privacy, /separate, default-off choices/);
   assert.match(privacy, /Reports are not anonymous/);
@@ -77,7 +77,7 @@ test("keeps the website light-only", async () => {
 
 test("exports pricing and keeps Lifafa's amount unannounced", async () => {
   const html = await exportedPage("pricing/index.html");
-  for (const product of ["Mimestream", "Airmail", "Superhuman Mail", "GotEmail", "Inbox Zero"]) {
+  for (const product of ["Bloop.email", "Mimestream", "Airmail", "Superhuman Mail", "GotEmail", "Inbox Zero"]) {
     assert.ok(html.includes(product), `${product} is included in pricing`);
     assert.ok((await exportedPage("index.html")).includes(product), `${product} is included in features`);
   }
@@ -91,6 +91,9 @@ test("exports pricing and keeps Lifafa's amount unannounced", async () => {
   assert.equal((lifafaRow.match(/Disclosed soon/g) ?? []).length, 3);
   assert.doesNotMatch(lifafaRow, /\$\d|€\d|₹\d/);
   assert.match(html, /49\.99/);
+  assert.match(html, /6\.99/);
+  assert.match(html, /79/);
+  assert.match(html, /4\.99/);
   assert.match(html, /39\.99/);
   assert.match(html, /300/);
   assert.match(html, /not free products/);
@@ -100,4 +103,40 @@ test("exports pricing and keeps Lifafa's amount unannounced", async () => {
   const csv = await readFile(new URL("../public/lifafa-feature-comparison.csv", import.meta.url), "utf8");
   assert.equal(csv.trim().split(/\r?\n/).length, 44);
   for (const product of ["Mimestream", "Airmail", "Superhuman Mail"]) assert.ok(csv.includes(product));
+});
+
+
+test("exports download channels without pretending an installer is available", async () => {
+  const html = await exportedPage("download/index.html");
+  const cards = html.match(/<article class="download-card"[\s\S]*?<\/article>/g) ?? [];
+  assert.equal(cards.length, 5);
+  for (const card of cards) {
+    assert.match(card, /Coming soon/);
+    assert.doesNotMatch(card, /<a |<button|\.dmg|\.ipa|apps\.apple\.com|testflight\.apple\.com/);
+  }
+  for (const product of ["Lifafa Mail", "Bloop.email", "Mimestream", "Airmail", "Superhuman Mail", "GotEmail", "Inbox Zero"]) assert.ok(html.includes(product));
+  assert.match(html, /Windows/);
+  assert.match(html, /Android/);
+  assert.match(html, /Web/);
+  assert.match(html, /Limited beta/);
+  assert.match(html, /Presale \/ beta/);
+  assert.match(html, /No public invitation/);
+  assert.match(html, /iOS 27 or later/);
+  assert.match(html, /macOS 27 or later/);
+});
+
+test("privacy illustration and product claims match current native scope", async () => {
+  const home = await exportedPage("index.html");
+  const privacy = await exportedPage("privacy/index.html");
+  for (const html of [home, privacy]) {
+    assert.match(html, /aria-label="Gmail, Outlook, iCloud and IMAP connect directly/);
+    assert.match(html, /OS and sandbox protection|operating-system protection/);
+    assert.match(html, /sender.logo/i);
+    assert.doesNotMatch(html, /Intelligence is off by default|Local draft \+ review|Opt-in intent views/);
+  }
+  assert.match(privacy, /Fresh version 3 consent/);
+  assert.match(privacy, /binary UUID\/offset frames/);
+  assert.match(home, /id="privacy"/);
+  assert.match(home, /Footer resources/);
+  assert.match(home, /download\//);
 });

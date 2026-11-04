@@ -2,9 +2,9 @@
 
 Responsive static product and OAuth app-domain website for the native Lifafa Mail app, designed by SolvePao Research.
 
-The redesign follows the supplied Fanout hero composition with Lifafa-specific copy and original artwork. Feature copy is grounded in the Lifafa-iOS implementation. The interactive workspace uses **fictional sample mail**, browser-memory state and no mailbox/API connections. It includes inbox search, message selection, a calendar illustration, work-item completion/undo, accessible feature tabs, a filterable 43-feature, six-product comparison and a downloadable CSV.
+The redesign follows the supplied Fanout hero composition with Lifafa-specific copy and original artwork. Feature copy is grounded in the Lifafa-iOS implementation. The interactive workspace uses **fictional sample mail**, browser-memory state and no mailbox/API connections. It includes inbox search, message selection, a calendar illustration, accessible feature tabs, a filterable 43-feature, seven-product comparison and a downloadable CSV.
 
-A separate `/pricing/` page compares published paid plans for Mimestream, Airmail, Superhuman Mail, GotEmail and Inbox Zero, in a monthly, annual and lifetime comparison table, with source links and plan caveats. A highlighted Lifafa row below the competitors keeps all three amounts “Disclosed soon”. Lifafa remains “Coming soon” with an affordability goal and no disclosed amount. Privacy and Terms routes are retained. The site has no authentication, form collection, analytics, marketing pixels, backend or runtime server requirement. App availability is described as **in active development**; public downloads and pricing are not announced.
+A separate `/pricing/` page compares published paid plans for Bloop.email, Mimestream, Airmail, Superhuman Mail, GotEmail and Inbox Zero, in a monthly, annual and lifetime comparison table, with source links and plan caveats. A highlighted first Lifafa row keeps all three amounts “Disclosed soon”. Lifafa remains “Coming soon” with an affordability goal and no disclosed amount. A separate `/download/` page lists iPhone, iPad, Mac, direct Mac and TestFlight channels as **Coming soon**, plus a sourced seven-product platform/distribution table shared with pricing. The homepage has an original privacy connection diagram, and every route uses the expanded Product / Features / Resources / Connect footer. Privacy and Terms routes are retained. The site has no authentication, form collection, analytics, marketing pixels, backend or runtime server requirement. App availability is described as **in active development**; public downloads and pricing are not announced.
 
 ## Local preview
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev -- --port 4173
 ```
 
-Open `http://localhost:4173/`, `http://localhost:4173/#compare`, or `http://localhost:4173/pricing/`.
+Open `http://localhost:4173/`, `http://localhost:4173/#compare`, `http://localhost:4173/pricing/`, or `http://localhost:4173/download/`.
 
 ## Static export
 
@@ -29,7 +29,9 @@ Project-path hosting is supported with `NEXT_PUBLIC_BASE_PATH=/Lifafa-Mail-App`.
 
 - `app/landing-experience.tsx`: page sections and local demo behavior.
 - `app/pricing-data.ts` and `app/pricing/`: sourced competitor prices and the pricing page. Airmail uses the US App Store rates and discloses the conflicting help-center rates.
-- `app/comparison-data.ts`: comparison claims; reviewed 24 October 2026. “Not listed” means unverified, not absent.
+- `app/availability-data.ts`, `app/availability-comparison.tsx` and `app/download/`: platform and distribution status, checked 4 November 2026.
+- `app/privacy-flow.tsx`: original accessible SVG mail-connection diagram.
+- `app/comparison-data.ts`: comparison claims; existing competitor features reviewed 24 October 2026; Lifafa and Bloop updated 4 November 2026. “Not listed” means unverified, not absent.
 - `public/lifafa-feature-comparison.csv`: matching downloadable feature inventory; update when comparison data changes.
 - `public/assets/mail-still-life-cutout.png`: original generated paper-envelope artwork.
 - `public/og-lifafa.png`: social artwork.
@@ -38,3 +40,5 @@ Project-path hosting is supported with `NEXT_PUBLIC_BASE_PATH=/Lifafa-Mail-App`.
 - `design-qa.md`: browser QA results. Temporary captures and scraped material live in ignored `build/`.
 
 The app-only TypeScript check excludes unused template `db/` and `worker/` stubs. A full `tsc --noEmit` currently reports missing pre-existing Cloudflare ambient types (`cloudflare:workers`, `Fetcher`, `D1Database`); the static export build does not need these stubs.
+
+Current native scope is taken from `../Lifafa-iOS/docs/current-product-scope.md`: Intelligence and email-work were removed on 28 October 2026. To Do is coming soon; the sample preview reflects that placeholder. Existing Previous Tasks and historical encrypted data are retained. The website does not advertise retired providers, generated replies, work sync, or Reminders/Spotlight exports as current capabilities.
